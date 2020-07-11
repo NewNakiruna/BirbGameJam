@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3590302541482319369
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815951643264785710, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_Name
+      value: Birb_1 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: DisplayName
+      value: Blue Jay
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: DisplayDescription
+      value: Member of the Corvid Family
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: EatDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: EatAmountPerSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: MoneyRewardAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: MinRarity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: MaxRarity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: VisitorId
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e39df440487e9748892363d5bf00bba, type: 3}
