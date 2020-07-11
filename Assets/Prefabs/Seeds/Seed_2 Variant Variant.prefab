@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 4597933669747291512, guid: bf506b8f04ec2384f83da0f58a707852,
         type: 3}
       propertyPath: Rarity
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4597933669747291512, guid: bf506b8f04ec2384f83da0f58a707852,
         type: 3}
