@@ -39,6 +39,11 @@ namespace BirbSimulator
             if(GetNextFreeSpot()!=-1)
             {
                 canSpawn = true;
+                Unlock();
+            }
+            else
+            {
+                Lock();
             }
             return canSpawn;
         }
