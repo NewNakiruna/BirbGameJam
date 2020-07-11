@@ -12,6 +12,7 @@ namespace BirbSimulator
         public int MaxPossibleSlots;
         public int StartingSlotAmount;
         public int MaxFeed;
+        public List<FeederLandingSpot> LandingSpots;
         // End Inspector Values
 
         // Non-Inspector Values
@@ -19,7 +20,7 @@ namespace BirbSimulator
         protected bool IsUnlocked;
         protected int CurrentFeedAmount;
         protected int CurrentFeedRarity;
-        protected List<FeederLandingSpot> LandingSpots;
+        
 
         public void InitializeFeeder()
         {
@@ -27,7 +28,6 @@ namespace BirbSimulator
             CurrentFeedAmount = 0;
             CurrentFeedRarity = -1;
             IsUnlocked = false;
-            //Initialize LandingSpots with unique FeederLandingSpots = CurrentSlotAmount
         }
 
         public void UpdateFeeder(float deltaTime)
@@ -41,8 +41,7 @@ namespace BirbSimulator
             if(GetNextFreeSpot()!=-1)
             {
                 canSpawn = true;
-                Unlock();
-            }
+              }
             else
             {
                 Lock();
@@ -83,39 +82,43 @@ namespace BirbSimulator
 
         public void Consume(int amount)
         {
-            //If CurrentFeedAmount is greater than or equal to the desired Consume amount, update the CurrentFeedAmount. Otherwise, do nothing.
+            //If CurrentFeedAmount is greater than or equal to the desired Consume amount, update the CurrentFeedAmount. Otherwise, consume what is remaining.
             if(CurrentFeedAmount >= amount)
             {
                 CurrentFeedAmount = CurrentFeedAmount - amount;
+            }
+            else
+            {
+                CurrentFeedAmount == 0;
             }
         }
 
         public int GetNextFreeSpot()
         {
-            int returnValue = -1;
+            int landingSpotId = null;
             //Loop through LandingSpots for an empty FeederLandingSpot
-            for (int i=0; i < LandingSpots.count; i++)
+            for (int i=0; i < LandingSpots.Count; i++)
             {
                 //If FeederLandingSpot is empty, update returnValue to return the position in the array.
-                if(LandingSpots[i].GetIsFilled() == false)
+                if(!LandingSpots[i].GetIsFilled())
                 {
-                    returnValue =  i;
-                    i = LandingSpots.count;
+                    landingSpotId =  LandingSpots[i].LandingSpotId;
+                    break;
                 }
             }
-            return returnValue;
+            return landingSpotId;
         }
 
         public FeederLandingSpot GetLandingSpotById(int landingSpotId)
         {
-            int landingSpotLocation = -1;
+            int landingSpotIndex = -1;
             //Loop through LandingSpots looking for landingSpotId
-            for (int i = 0; i < LandingSpots.count; i++)
+            for (int i = 0; i < LandingSpots.Count; i++)
             {
                 if (LandingSpots[i].LandingSpotId == landingSpotId)
                 {
-                    landingSpotLocation = i;
-                    i = LandingSpots.count;
+                    landingSpotIndex = i;
+                    break;
                 }
             }
 
@@ -126,7 +129,7 @@ namespace BirbSimulator
             }
             else
             {
-                return LandingSpots[landingSpotLocation];
+                return LandingSpots[landingSpotIndex];
             }
         }
     }
