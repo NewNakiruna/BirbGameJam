@@ -26,6 +26,8 @@ namespace BirbSimulator
             CurrentSlotAmount = StartingSlotAmount;
             CurrentFeedAmount = 0;
             CurrentFeedRarity = -1;
+            IsUnlocked = false;
+            //Initialize LandingSpots with unique FeederLandingSpots = CurrentSlotAmount
         }
 
         public void UpdateFeeder(float deltaTime)
