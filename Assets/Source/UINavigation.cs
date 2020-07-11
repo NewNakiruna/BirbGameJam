@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class UINavigation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform contentPanel;
+    public GameObject shopModal;
 
-    // Update is called once per frame
-    void Update()
+    public void OpenShopWindow()
     {
-        
+        Instantiate(shopModal, contentPanel);
     }
 }
