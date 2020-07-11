@@ -15,12 +15,12 @@ PrefabInstance:
     - target: {fileID: 4390964855257088840, guid: 9c31eab31b5908549afde92c9e6b5050,
         type: 3}
       propertyPath: Rarity
-      value: 4
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4390964855257088840, guid: 9c31eab31b5908549afde92c9e6b5050,
         type: 3}
       propertyPath: Cost
-      value: 100
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4438503935736704831, guid: 9c31eab31b5908549afde92c9e6b5050,
         type: 3}
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 8492450723294165203, guid: 9c31eab31b5908549afde92c9e6b5050,
         type: 3}
       propertyPath: m_Name
-      value: Seed_4
+      value: Seed_4 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c31eab31b5908549afde92c9e6b5050, type: 3}
