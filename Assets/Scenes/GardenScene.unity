@@ -254,8 +254,10 @@ MonoBehaviour:
   PossibleSpawners: []
   PossibleGardenVisitorPrefabs: []
   PossibleSeedTypes:
-  - {fileID: 4650718501064730611, guid: 8f34894051b85df4592095ce302d4bbe, type: 3}
   - {fileID: 4597933669747291512, guid: bf506b8f04ec2384f83da0f58a707852, type: 3}
+  - {fileID: 4332524130293430040, guid: 3239b244e6aa882488b5e2fdf4da6ccf, type: 3}
+  - {fileID: 4390964855257088840, guid: 94ecc945b55a5564e8522c42a24db0a8, type: 3}
+  - {fileID: 3563874855426745975, guid: f48b29f1d14ea3e4db1d44b30c6dedcb, type: 3}
 --- !u!1 &1318810512
 GameObject:
   m_ObjectHideFlags: 0
