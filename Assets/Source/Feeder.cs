@@ -89,13 +89,13 @@ namespace BirbSimulator
             }
             else
             {
-                CurrentFeedAmount == 0;
+                CurrentFeedAmount = 0;
             }
         }
 
         public int GetNextFreeSpot()
         {
-            int landingSpotId = null;
+            int landingSpotId = -1;
             //Loop through LandingSpots for an empty FeederLandingSpot
             for (int i=0; i < LandingSpots.Count; i++)
             {
@@ -123,7 +123,7 @@ namespace BirbSimulator
             }
 
             //If landingSpotId was not found, return null. Else, return found FeederLandingSpot.
-            if (landingSpotLocation == -1)
+            if (landingSpotIndex == -1)
             {
                 return null;
             }
