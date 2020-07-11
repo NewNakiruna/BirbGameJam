@@ -22,6 +22,7 @@ namespace BirbSimulator
         public int MaxRarity;
         public bool IsGround;
         public Sprite VisitorSprite;
+        public Animator VisitorAnimator;
         // End Inspector Values
 
         // Non-Inspector Values
@@ -34,20 +35,40 @@ namespace BirbSimulator
         protected int SpawnerId;
         protected int FeederId;
         protected int FeederLandingSpotId;
+        protected EVisitorAnimState CurrentAnimState;
 
         public void InitializeGardenVisitor()
         {
-
+            SpawnerId = -1;
+            FeederId = -1;
+            FeederLandingSpotId = -1;
+            IsEating = false;
+            PendingLeave = false;
+            SetAnimState(EVisitorAnimState.EVAS_Idle);
         }
 
         public void UpdateGardenVisitor(float deltaTime)
         {
-
+            if (IsEating)
+            {
+                UpdateEatTimer(deltaTime);
+            }
         }
 
         public void UpdateEatTimer(float deltaTime)
         {
+            EatTimer += deltaTime;
 
+            int floorSecs = Mathf.FloorToInt(EatTimer);
+            int projectedTotal = floorSecs * EatAmountPerSec;
+            int difference = projectedTotal - ConsumedAmount;
+
+            PendingEatAmount += difference;
+            if (EatTimer >= EatDuration)
+            {
+                IsEating = false;
+                PendingLeave = true;
+            }
         }
 
         public int GetSpawnerId()
@@ -80,6 +101,11 @@ namespace BirbSimulator
             FeederLandingSpotId = feederLandingSpotId;
         }
 
+        public void BeginEating()
+        {
+            IsEating = true;
+        }
+
         public int GetPendingEatAmount()
         {
             return PendingEatAmount;
@@ -87,7 +113,13 @@ namespace BirbSimulator
 
         public void ConsumePending()
         {
+            ConsumedAmount += PendingEatAmount;
+            PendingEatAmount = 0;
+        }
 
+        public bool CanTap()
+        {
+            return !MustEatToTap || (MustEatToTap && IsEating);
         }
 
         public void OnTap()
@@ -100,7 +132,31 @@ namespace BirbSimulator
 
         public void Leave()
         {
+            if (ConsumedAmount <= 0)
+            {
+                PendingEatAmount = EatAmountPerSec;
+                ConsumePending();
+            }
 
+            IsEating = false;
+            PendingLeave = true;
+        }
+
+        public void SetAnimState(EVisitorAnimState newState)
+        {
+            if (VisitorAnimator != null)
+            {
+                switch(newState)
+                {
+                    case EVisitorAnimState.EVAS_Idle:
+                        break;
+                    case EVisitorAnimState.EVAS_Move:
+                        break;
+                    case EVisitorAnimState.EVAS_Eat:
+                        break;
+                }
+            }
+            CurrentAnimState = newState;
         }
     }
 

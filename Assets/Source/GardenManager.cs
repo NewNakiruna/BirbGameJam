@@ -10,6 +10,13 @@ namespace BirbSimulator
         ERT_Money
     }
 
+    public enum EVisitorAnimState
+    {
+        EVAS_Idle,
+        EVAS_Move,
+        EVAS_Eat
+    }
+
     public class GardenManager : MonoBehaviour
     {
         // Begin Inspector Values
