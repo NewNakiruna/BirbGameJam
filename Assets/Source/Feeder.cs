@@ -24,13 +24,13 @@ namespace BirbSimulator
         public void InitializeFeeder()
         {
             CurrentSlotAmount = StartingSlotAmount;
-            CurrentFeedAmount = MaxFeed;
+            CurrentFeedAmount = 0;
             CurrentFeedRarity = -1;
         }
 
         public void UpdateFeeder(float deltaTime)
         {
-
+            
         }
 
         public bool CanSpawn()
@@ -92,7 +92,7 @@ namespace BirbSimulator
         {
             int returnValue = -1;
             //Loop through LandingSpots for an empty FeederLandingSpot
-            for (i=0; i < LandingSpots.count; i++)
+            for (int i=0; i < LandingSpots.count; i++)
             {
                 //If FeederLandingSpot is empty, update returnValue to return the position in the array.
                 if(LandingSpots[i].GetIsFilled() == false)
@@ -108,7 +108,7 @@ namespace BirbSimulator
         {
             int landingSpotLocation = -1;
             //Loop through LandingSpots looking for landingSpotId
-            for (i = 0; i < LandingSpots.count; i++)
+            for (int i = 0; i < LandingSpots.count; i++)
             {
                 if (LandingSpots[i].LandingSpotId == landingSpotId)
                 {
