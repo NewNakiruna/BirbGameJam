@@ -30,10 +30,10 @@ namespace BirbSimulator
             IsUnlocked = false;
         }
 
-        public void UpdateFeeder(float deltaTime)
+        /*public void UpdateFeeder(float deltaTime)
         {
             
-        }
+        }*/
 
         public bool CanSpawn()
         {
