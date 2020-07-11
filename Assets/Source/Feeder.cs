@@ -24,6 +24,8 @@ namespace BirbSimulator
         public void InitializeFeeder()
         {
             CurrentSlotAmount = StartingSlotAmount;
+            CurrentFeedAmount = MaxFeed;
+            CurrentFeedRarity = -1;
         }
 
         public void UpdateFeeder(float deltaTime)
@@ -33,7 +35,12 @@ namespace BirbSimulator
 
         public bool CanSpawn()
         {
-            return false;
+            bool canSpawn = false;
+            if(GetNextFreeSpot()!=-1)
+            {
+                canSpawn = true;
+            }
+            return canSpawn;
         }
 
         public void Unlock()
@@ -58,27 +65,62 @@ namespace BirbSimulator
 
         public void FillFeeder(int feedRarity)
         {
-
+            CurrentFeedAmount = MaxFeed;
+            CurrentFeedRarity = feedRarity;
         }
 
         public int GetCurrentFeedRarity()
         {
-            return -1;
+            return CurrentFeedRarity;
         }
 
         public void Consume(int amount)
         {
-
+            //If CurrentFeedAmount is greater than or equal to the desired Consume amount, update the CurrentFeedAmount. Otherwise, do nothing.
+            if(CurrentFeedAmount >= amount)
+            {
+                CurrentFeedAmount = CurrentFeedAmount - amount;
+            }
         }
 
         public int GetNextFreeSpot()
         {
-            return -1;
+            int returnValue = -1;
+            //Loop through LandingSpots for an empty FeederLandingSpot
+            for (i=0; i < LandingSpots.count; i++)
+            {
+                //If FeederLandingSpot is empty, update returnValue to return the position in the array.
+                if(LandingSpots[i].GetIsFilled() == false)
+                {
+                    returnValue =  i;
+                    i = LandingSpots.count;
+                }
+            }
+            return returnValue;
         }
 
         public FeederLandingSpot GetLandingSpotById(int landingSpotId)
         {
-            return null;
+            int landingSpotLocation = -1;
+            //Loop through LandingSpots looking for landingSpotId
+            for (i = 0; i < LandingSpots.count; i++)
+            {
+                if (LandingSpots[i].LandingSpotId == landingSpotId)
+                {
+                    landingSpotLocation = i;
+                    i = LandingSpots.count;
+                }
+            }
+
+            //If landingSpotId was not found, return null. Else, return found FeederLandingSpot.
+            if (landingSpotLocation == -1)
+            {
+                return null;
+            }
+            else
+            {
+                return LandingSpots[landingSpotLocation];
+            }
         }
     }
 
