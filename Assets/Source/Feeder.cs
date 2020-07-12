@@ -24,15 +24,17 @@ namespace BirbSimulator
         protected bool IsUnlocked;
         protected int CurrentFeedAmount;
         protected int CurrentFeedRarity;
+        protected GardenManager GardenManagerRef;
         
 
-        public void InitializeFeeder()
+        public void InitializeFeeder(GardenManager gardenManager)
         {
             CurrentAvailableSlotAmount = StartingSlotAmount;
             CurrentFeedAmount = 0;
             CurrentFeedRarity = -1;
             IsUnlocked = false;
             FillImage.fillAmount = 0;
+            GardenManagerRef = gardenManager;
         }
 
         public void UpdateFeeder(float deltaTime)
@@ -254,6 +256,7 @@ namespace BirbSimulator
         void OnMouseDown()
         {
             Debug.Log("Feeder click.");
+            GardenManagerRef.TapFeeder(this);
         }
     }
 

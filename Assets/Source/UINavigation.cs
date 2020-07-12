@@ -10,6 +10,8 @@ public class UINavigation : MonoBehaviour
     public GardenManager thisGardenManager;
     public GameObject shopModal;
     public ShopItem shopItem;
+    public FeederModal feederModal;
+    public FeederItem feederItem;
 
     protected GameObject thisShopWindow;
     protected Button[] buyButtons;
@@ -35,7 +37,7 @@ public class UINavigation : MonoBehaviour
         Transform contentPanelForShop = thisShopWindow.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0);
         for (int i = 0;i<thisGardenManager.PossibleSeedTypes.Count;i++)
         {
-            ShopItem lineItem = Instantiate(shopItem, contentPanelForShop);
+            ShopItem lineItem = Instantiate(shopItem, contentPanel);
             lineItem.InitShopItem(thisGardenManager.PossibleSeedTypes[i], thisGardenManager);
         }
     }
@@ -55,15 +57,27 @@ public class UINavigation : MonoBehaviour
         }
     }
 
-    void ResetGameState()
-    {
-        thisGardenManager.ResetGameProgress();
-    }
-
     void CloseShopWindow()
     {
         GameObject.Destroy(thisShopWindow);
         thisGardenManager.SetUIOpen(false);
+    }
+
+    public void OpenFeederMenu()
+    {
+        thisGardenManager.SetUIOpen(true);
+        FeederModal modal = Instantiate(feederModal, contentPanel);
+        modal.InitFeederModal(thisGardenManager);
+    }
+
+    public void CloseFeederMenu()
+    {
+        thisGardenManager.SetUIOpen(false);
+    }
+
+    void ResetGameState()
+    {
+        thisGardenManager.ResetGameProgress();
     }
 
     void QuitGame()
