@@ -147,10 +147,13 @@ namespace BirbSimulator
 
             foreach (GardenVisitor visitor in pendingDestroy)
             {
+                CurrentGardenVisitors.Remove(visitor);
+
+                Feeder feeder = GetFeederById(visitor.GetFeederId());
+                feeder.ReleaseSlot(visitor.IsGround, visitor.GetFeederLandingSpotId());
+
                 Destroy(visitor);
             }
-
-            pendingDestroy.Clear();
         }
 
         void InitializeNewGame()
