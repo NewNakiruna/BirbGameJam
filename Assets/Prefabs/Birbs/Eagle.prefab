@@ -110,7 +110,7 @@ MonoBehaviour:
   MaxRarity: 100
   VisitorPersuasion: 2
   IsGround: 0
-  MoveSpeed: 1
+  MoveSpeed: 0.75
 --- !u!61 &7242292131964617053
 BoxCollider2D:
   m_ObjectHideFlags: 0

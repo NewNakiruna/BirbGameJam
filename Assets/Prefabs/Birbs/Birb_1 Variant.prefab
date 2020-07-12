@@ -76,12 +76,12 @@ PrefabInstance:
     - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
       propertyPath: DisplayName
-      value: Blue Jay
+      value: Cardinal
       objectReference: {fileID: 0}
     - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
       propertyPath: DisplayDescription
-      value: Member of the Corvid Family
+      value: Rare, Red, Rectangular... wait.
       objectReference: {fileID: 0}
     - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
@@ -91,27 +91,32 @@ PrefabInstance:
     - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
       propertyPath: EatAmountPerSec
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
       propertyPath: MoneyRewardAmount
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
       propertyPath: MinRarity
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
       propertyPath: MaxRarity
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
       propertyPath: VisitorId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243973418416919074, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8457647843577071228, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
