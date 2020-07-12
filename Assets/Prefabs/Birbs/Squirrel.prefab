@@ -110,7 +110,7 @@ MonoBehaviour:
   MaxRarity: 100
   VisitorPersuasion: 1
   IsGround: 1
-  MoveSpeed: 1
+  MoveSpeed: 0.8
 --- !u!61 &7010957817489568361
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
