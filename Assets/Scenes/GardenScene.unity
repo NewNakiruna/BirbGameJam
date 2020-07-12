@@ -969,7 +969,7 @@ MonoBehaviour:
   MaxTimeBetweenSpawns: 2
   ProbabilityForPests: 40
   PossibleFeeders:
-  - {fileID: 0}
+  - {fileID: 1609770228}
   PossibleSpawners:
   - {fileID: 1398307923}
   - {fileID: 1608405482}
@@ -1483,6 +1483,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3767644433547655677, guid: e21b15fc913e56343925a17272ca6ef6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4018187545785912922, guid: e21b15fc913e56343925a17272ca6ef6,
         type: 3}
       propertyPath: m_Layer
@@ -1520,6 +1525,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e21b15fc913e56343925a17272ca6ef6, type: 3}
+--- !u!114 &1609770228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8712864156292685723, guid: e21b15fc913e56343925a17272ca6ef6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1609770227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33a60f1ee973bf48be50c5061bd600c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2110620472
 GameObject:
   m_ObjectHideFlags: 0
