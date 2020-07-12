@@ -31,6 +31,7 @@ namespace BirbSimulator
         public void UpdateMoney(int amount)
         {
             Money = Mathf.Max(0, Money + amount);
+            Debug.Log("Current Funds: " + Money);
         }
 
         public Dictionary<int, int> GetSeeds()
