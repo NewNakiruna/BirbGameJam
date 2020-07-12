@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BirbSimulator
 {
@@ -15,6 +16,7 @@ namespace BirbSimulator
         public int MaxFeed;
         public List<FeederLandingSpot> AirLandingSpots;
         public List<FeederLandingSpot> GroundLandingSpots;
+        public Image FillImage;
         // End Inspector Values
 
         // Non-Inspector Values
@@ -30,6 +32,12 @@ namespace BirbSimulator
             CurrentFeedAmount = 0;
             CurrentFeedRarity = -1;
             IsUnlocked = false;
+            FillImage.fillAmount = 0;
+        }
+
+        public void UpdateFeeder(float deltaTime)
+        {
+            FillImage.fillAmount = (float)CurrentFeedAmount / (float)MaxFeed;
         }
 
         public bool CanSpawnAir()
@@ -87,6 +95,8 @@ namespace BirbSimulator
                 CurrentFeedAmount = 0;
                 CurrentFeedRarity = -1;
             }
+
+            FillImage.fillAmount = (float)CurrentFeedAmount / (float)MaxFeed;
         }
 
         public int AssignSlot(bool isGround)
@@ -239,6 +249,11 @@ namespace BirbSimulator
             {
                 return GroundLandingSpots[landingSpotIndex];
             }
+        }
+
+        void OnMouseDown()
+        {
+            Debug.Log("Feeder click.");
         }
     }
 

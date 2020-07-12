@@ -892,8 +892,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinTimeBetweenSpawns: 1
   MaxTimeBetweenSpawns: 2
-  ProbabilityForPests: 40
-  ProbabilityForSpecial: 10
+  ProbabilityForPests: 5
+  ProbabilityForSpecial: 1
   PossibleFeeders:
   - {fileID: 1609770228}
   PossibleSpawners:

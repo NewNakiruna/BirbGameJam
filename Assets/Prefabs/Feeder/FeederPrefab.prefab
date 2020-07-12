@@ -523,6 +523,7 @@ MonoBehaviour:
   GroundLandingSpots:
   - {fileID: 1594777168874708478}
   - {fileID: 2358146174571884623}
+  FillImage: {fileID: 244157994798459875}
 --- !u!212 &8587906182842711111
 SpriteRenderer:
   m_ObjectHideFlags: 0
