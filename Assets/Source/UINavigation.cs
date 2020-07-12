@@ -41,6 +41,9 @@ public class UINavigation : MonoBehaviour
 
             //Add Buy Button to buyButtons list
             buyButtons[i] = lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Button>();
+
+            //Add Listener to the Buy Button
+            lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { playerInventory.UpdateMoney(-thisGardenManager.PossibleSeedTypes[i].Cost); playerInventory.AddSeed(thisGardenManager.PossibleSeedTypes[i].SeedId, 1); });
         }
     }
 
