@@ -44,6 +44,7 @@ namespace BirbSimulator
         protected float TimeSinceLastSpawn;
         protected float TimeBetweenSpawns;
         protected Inventory PlayerInventory;
+        protected bool UIOpen;
 
         // Start is called before the first frame update
         void Start()
@@ -359,6 +360,11 @@ namespace BirbSimulator
 
         public void TapVisitor(GardenVisitor visitor)
         {
+            if (UIOpen)
+            {
+                return;
+            }
+
             switch (visitor.RewardType)
             {
                 case EResourceType.ERT_Money:
@@ -395,6 +401,11 @@ namespace BirbSimulator
         public void RemoveSeed(int seedId, int amount)
         {
             PlayerInventory.RemoveSeed(seedId, amount);
+        }
+
+        public void SetUIOpen(bool isOpen)
+        {
+            UIOpen = isOpen;
         }
 
         void SaveGame()

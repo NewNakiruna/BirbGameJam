@@ -7,15 +7,17 @@ using UnityEngine.UI;
 public class UINavigation : MonoBehaviour
 {
     public Transform contentPanel;
-    public GameObject shopModal;
     public GardenManager thisGardenManager;
-    public GameObject shopItem;
+    public GameObject shopModal;
+    public ShopItem shopItem;
 
     protected GameObject thisShopWindow;
     protected Button[] buyButtons;
 
     public void OpenShopWindow()
     {
+        thisGardenManager.SetUIOpen(true);
+
         thisShopWindow = Instantiate(shopModal, contentPanel);
         Component[] Buttons = thisShopWindow.GetComponentsInChildren<Button>();
         
@@ -33,19 +35,8 @@ public class UINavigation : MonoBehaviour
         Transform contentPanelForShop = thisShopWindow.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0);
         for (int i = 0;i<thisGardenManager.PossibleSeedTypes.Count;i++)
         {
-            GameObject lineItem = Instantiate(shopItem,contentPanelForShop);
-            //Change Description Text
-            lineItem.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = thisGardenManager.PossibleSeedTypes[i].DisplayName;
-            
-            //Change Buy Button text
-            lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "$"+thisGardenManager.PossibleSeedTypes[i].Cost.ToString();
-
-            //Add Buy Button to buyButtons list
-            buyButtons[i] = lineItem.transform.GetChild(0).transform.GetChild(1).GetComponent<Button>();
-
-            //Add Listener to the Buy Button to remove money = to cost and add 1 seed to player inventory
-            lineItem.transform.GetChild(0).transform.GetChild(1).GetComponent<Button>().onClick.AddListener(
-                delegate { thisGardenManager.UpdateMoney(-thisGardenManager.PossibleSeedTypes[i].Cost); thisGardenManager.AddSeed(thisGardenManager.PossibleSeedTypes[i].SeedId, 1); });
+            ShopItem lineItem = Instantiate(shopItem, contentPanelForShop);
+            lineItem.InitShopItem(thisGardenManager.PossibleSeedTypes[i], thisGardenManager);
         }
     }
 
@@ -72,6 +63,7 @@ public class UINavigation : MonoBehaviour
     void CloseShopWindow()
     {
         GameObject.Destroy(thisShopWindow);
+        thisGardenManager.SetUIOpen(false);
     }
 
     void QuitGame()

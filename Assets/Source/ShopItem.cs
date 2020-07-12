@@ -27,6 +27,7 @@ namespace BirbSimulator
 
         public void OnBuyButtonClicked()
         {
+            Debug.Log("I bought seed " + SeedRef.DisplayName + " for " + SeedRef.Cost);
             GardenManagerRef.UpdateMoney(-(SeedRef.Cost));
             GardenManagerRef.AddSeed(SeedRef.SeedId, 1);
         }
