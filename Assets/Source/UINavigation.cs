@@ -12,7 +12,7 @@ public class UINavigation : MonoBehaviour
     public ShopItem shopItem;
     public FeederModal feederModal;
     public FeederItem feederItem;
-
+    
     protected GameObject thisShopWindow;
     protected Button[] buyButtons;
 

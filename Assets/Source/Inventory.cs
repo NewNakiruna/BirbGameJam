@@ -6,6 +6,8 @@ namespace BirbSimulator
 {
     public class Inventory : Object
     {
+        public string TextField;
+
         // Non-Inspector Values
         protected int Money;
         protected Dictionary<int, int> SeedInventory; // seed id, amount
