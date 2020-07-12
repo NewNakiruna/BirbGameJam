@@ -49,6 +49,7 @@ namespace BirbSimulator
             LerpPosition = 1.0f;
             PendingLeave = false;
             VisitorAnimator = gameObject.GetComponent<Animator>();
+            SetAnimState(EVisitorAnimState.EVAS_Move);
         }
 
         public void UpdateGardenVisitor(float deltaTime)
@@ -161,6 +162,9 @@ namespace BirbSimulator
 
         public void Leave()
         {
+            SetAnimState(EVisitorAnimState.EVAS_Move);
+            gameObject.transform.Rotate(Vector3.up, 180);
+
             if (ConsumedAmount <= 0 && MustEatToTap)
             {
                 PendingEatAmount = EatAmountPerSec;
@@ -187,6 +191,27 @@ namespace BirbSimulator
         public void SetAnimState(EVisitorAnimState newState)
         {
             CurrentAnimState = newState;
+            if (VisitorAnimator != null)
+            {
+                switch (CurrentAnimState)
+                {
+                    case EVisitorAnimState.EVAS_Idle:
+                        VisitorAnimator.SetBool("IsStand", true);
+                        VisitorAnimator.SetBool("IsFly", false);
+                        VisitorAnimator.SetBool("IsEat", false);
+                        break;
+                    case EVisitorAnimState.EVAS_Eat:
+                        VisitorAnimator.SetBool("IsEat", true);
+                        VisitorAnimator.SetBool("IsFly", false);
+                        VisitorAnimator.SetBool("IsStand", false);
+                        break;
+                    case EVisitorAnimState.EVAS_Move:
+                        VisitorAnimator.SetBool("IsFly", true);
+                        VisitorAnimator.SetBool("IsStand", false);
+                        VisitorAnimator.SetBool("IsEat", false);
+                        break;
+                }
+            }
         }
     }
 

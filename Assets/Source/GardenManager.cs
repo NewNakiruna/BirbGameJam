@@ -119,6 +119,15 @@ namespace BirbSimulator
                         if (visitorLerpPosition <= 0.0f)
                         {
                             visitor.BeginEating();
+                            if (feeder.GetIsEmpty())
+                            {
+                                Debug.Log("Empty Feeder");
+                                visitor.SetAnimState(EVisitorAnimState.EVAS_Idle);
+                            }
+                            else
+                            {
+                                visitor.SetAnimState(EVisitorAnimState.EVAS_Eat);
+                            }
                         }
                     }
                 }
@@ -226,6 +235,11 @@ namespace BirbSimulator
                 }
 
                 GardenVisitor newVisitor = Instantiate(attemptedVisitor, spawnPosition, Quaternion.identity, gameObject.transform);
+                if (newVisitor.transform.position.x < 0.0f)
+                {
+                    newVisitor.transform.Rotate(Vector3.up, 180);
+                }
+
                 newVisitor.InitializeGardenVisitor();
                 newVisitor.SetFeederId(spawningFeeder.FeederId);
                 newVisitor.SetFeederLandingSpotId(landingSpot.LandingSpotId);
