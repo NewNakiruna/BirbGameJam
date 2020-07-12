@@ -109,6 +109,7 @@ namespace BirbSimulator
 
                     if (visitor.GetPendingLeave())
                     {
+                        Debug.Log(visitorLerpPosition);
                         if (visitorLerpPosition >= 1.0f)
                         {
                             pendingDestroy.Add(visitor);
@@ -152,8 +153,10 @@ namespace BirbSimulator
                 Feeder feeder = GetFeederById(visitor.GetFeederId());
                 feeder.ReleaseSlot(visitor.IsGround, visitor.GetFeederLandingSpotId());
 
-                Destroy(visitor);
+                Destroy(visitor.gameObject);
             }
+
+            pendingDestroy.Clear();
         }
 
         void InitializeNewGame()
