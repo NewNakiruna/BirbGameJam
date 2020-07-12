@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: Cost
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4597933669747291512, guid: bf506b8f04ec2384f83da0f58a707852,
+        type: 3}
+      propertyPath: DisplayName
+      value: Safflower Seed Mix
+      objectReference: {fileID: 0}
     - target: {fileID: 8573672790710783715, guid: bf506b8f04ec2384f83da0f58a707852,
         type: 3}
       propertyPath: m_Name
