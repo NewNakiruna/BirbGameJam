@@ -107,5 +107,6 @@ MonoBehaviour:
   MustEatToTap: 1
   MinRarity: 0
   MaxRarity: 100
+  VisitorPersuasion: 2
   IsGround: 0
-  VisitorAnimator: {fileID: 0}
+  MoveSpeed: 1
