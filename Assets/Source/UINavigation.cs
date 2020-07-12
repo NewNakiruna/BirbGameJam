@@ -10,8 +10,8 @@ public class UINavigation : MonoBehaviour
     public GameObject shopModal;
     public GardenManager thisGardenManager;
     public GameObject shopItem;
-    public Inventory playerInventory;
 
+    protected Inventory playerInventory;
     protected GameObject thisShopWindow;
     protected Button[] buyButtons;
 
@@ -25,10 +25,12 @@ public class UINavigation : MonoBehaviour
         Buttons[2].GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
 
         BuildTheShop();
+        //UpdateTheShop();
     }
 
     void BuildTheShop()
     {
+        buyButtons = new Button[thisGardenManager.PossibleSeedTypes.Count];
         Transform contentPanelForShop = thisShopWindow.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0);
         for (int i = 0;i<thisGardenManager.PossibleSeedTypes.Count;i++)
         {
@@ -40,10 +42,11 @@ public class UINavigation : MonoBehaviour
             lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "$"+thisGardenManager.PossibleSeedTypes[i].Cost.ToString();
 
             //Add Buy Button to buyButtons list
-            buyButtons[i] = lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Button>();
+            buyButtons[i] = lineItem.transform.GetChild(0).transform.GetChild(1).GetComponent<Button>();
 
-            //Add Listener to the Buy Button
-            lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { playerInventory.UpdateMoney(-thisGardenManager.PossibleSeedTypes[i].Cost); playerInventory.AddSeed(thisGardenManager.PossibleSeedTypes[i].SeedId, 1); });
+            //Add Listener to the Buy Button to remove money = to cost and add 1 seed to player inventory
+            /*lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(
+                delegate { playerInventory.UpdateMoney(-thisGardenManager.PossibleSeedTypes[i].Cost); playerInventory.AddSeed(thisGardenManager.PossibleSeedTypes[i].SeedId, 1); });*/
         }
     }
 
