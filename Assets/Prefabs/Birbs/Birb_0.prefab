@@ -100,10 +100,10 @@ MonoBehaviour:
   VisitorId: 0
   DisplayName: Pigeon
   DisplayDescription: Rat of the Sky
-  EatDuration: 3
+  EatDuration: 7
   EatAmountPerSec: 1
   EatType: 0
-  MoneyRewardAmount: 10
+  MoneyRewardAmount: 1
   SeedRewardId: 0
   RewardType: 1
   LeavesOnTap: 1

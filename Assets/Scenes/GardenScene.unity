@@ -890,10 +890,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ba9d5c116e9f149b86658d66eddde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinTimeBetweenSpawns: 2
-  MaxTimeBetweenSpawns: 5
+  MinTimeBetweenSpawns: 1
+  MaxTimeBetweenSpawns: 4
   ProbabilityForPests: 15
-  ProbabilityForSpecial: 10
+  ProbabilityForSpecial: 5
   PossibleFeeders:
   - {fileID: 1609770228}
   PossibleSpawners:
