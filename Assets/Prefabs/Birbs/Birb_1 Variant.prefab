@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3250577901833643742, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5224335212102678122, guid: e9cca708326e05148af4dcd6319f75e3,
+        type: 3}
     - target: {fileID: 3433456876485469335, guid: 3e39df440487e9748892363d5bf00bba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -107,5 +113,10 @@ PrefabInstance:
       propertyPath: VisitorId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8457647843577071228, guid: 3e39df440487e9748892363d5bf00bba,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8ee68605231457345a94c49f11e67954, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e39df440487e9748892363d5bf00bba, type: 3}
