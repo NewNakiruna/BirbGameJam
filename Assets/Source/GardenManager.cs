@@ -337,17 +337,22 @@ namespace BirbSimulator
 
         }
 
-        void UpdateMoney(int amount)
+        public void UpdateMoney(int amount)
         {
             PlayerInventory.UpdateMoney(amount);
         }
 
-        void AddSeed(int seedId, int amount)
+        public int GetMoney()
+        {
+            return PlayerInventory.GetMoney();
+        }
+
+        public void AddSeed(int seedId, int amount)
         {
             PlayerInventory.AddSeed(seedId, amount);
         }
 
-        void RemoveSeed(int seedId, int amount)
+        public void RemoveSeed(int seedId, int amount)
         {
             PlayerInventory.RemoveSeed(seedId, amount);
         }
