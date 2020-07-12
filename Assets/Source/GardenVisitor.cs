@@ -148,7 +148,7 @@ namespace BirbSimulator
             {
                 switch(newState)
                 {
-                    case EVisitorAnimState.EVAS_Stand:
+                    case EVisitorAnimState.EVAS_Idle:
                         break;
                     case EVisitorAnimState.EVAS_Move:
                         break;
