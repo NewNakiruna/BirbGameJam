@@ -12,7 +12,7 @@ namespace BirbSimulator
 
     public enum EVisitorAnimState
     {
-        EVAS_Idle,
+        EVAS_Stand,
         EVAS_Move,
         EVAS_Eat
     }
