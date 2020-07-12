@@ -31,6 +31,6 @@ public class UINavigation : MonoBehaviour
 
     void QuitGame()
     {
-
+        Application.Quit();
     }
 }

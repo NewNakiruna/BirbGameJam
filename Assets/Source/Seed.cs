@@ -8,6 +8,7 @@ namespace BirbSimulator
     {
         // Begin Inspector Values
         public int SeedId;
+        public string DisplayName;
         public int Rarity;
         public int Cost;
         // End Inspector Values
