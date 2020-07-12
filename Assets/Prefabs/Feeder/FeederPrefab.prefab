@@ -513,7 +513,7 @@ MonoBehaviour:
   FeederId: 0
   MaxPossibleSlots: 6
   StartingSlotAmount: 4
-  MaxFeed: 25
+  MaxFeed: 50
   AirLandingSpots:
   - {fileID: 9060695547600593633}
   - {fileID: 4624528126625683057}
