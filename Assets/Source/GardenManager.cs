@@ -46,6 +46,8 @@ namespace BirbSimulator
                 InitializeNewGame();
             }
 
+            CurrentGardenVisitors = new List<GardenVisitor>();
+
             TimeSinceLastSpawn = 0.0f;
             TimeBetweenSpawns = Random.Range(MinTimeBetweenSpawns, MaxTimeBetweenSpawns);
         }
@@ -156,6 +158,11 @@ namespace BirbSimulator
         void AttemptSpawn()
         {
             GardenVisitor attemptedVisitor = ChooseVisitorType();
+            if (attemptedVisitor == null)
+            {
+                return;
+            }
+
             bool isGround = attemptedVisitor.IsGround;
 
             FeederLandingSpot landingSpot = null;
@@ -185,29 +192,40 @@ namespace BirbSimulator
                 Spawner spawner = ChooseSpawner(isGround);
                 Vector3 spawnPosition = spawner.transform.position;
                 spawnPosition.z = 0;
+
                 GardenVisitor newVisitor = Instantiate(attemptedVisitor, spawnPosition, Quaternion.identity);
                 newVisitor.InitializeGardenVisitor();
+                newVisitor.SetFeederId(spawningFeeder.FeederId);
+                newVisitor.SetFeederLandingSpotId(landingSpot.LandingSpotId);
+                newVisitor.SetSpawnerId(spawner.SpawnerId);
+
                 CurrentGardenVisitors.Add(newVisitor);
             }
+        }
+
+        bool ChooseVisitorPersuasion()
+        {
+            int pestRoll = Random.Range(1, 100);
+            return pestRoll <= ProbabilityForPests;
         }
 
         GardenVisitor ChooseVisitorType()
         {
             GardenVisitor visitorTypePrefab = null;
 
-            int pestRoll = Random.Range(1, 100);
-            if (pestRoll <= ProbabilityForPests)
-            {
-                IEnumerable<GardenVisitor> pests = PossibleGardenVisitorPrefabs.Where(visitor => visitor.IsGround);
-                int roll = Random.Range(0, pests.Count() - 1);
-                visitorTypePrefab = pests.ElementAt(roll);
-            }
-            else
-            {
-                IEnumerable<GardenVisitor> notPests = PossibleGardenVisitorPrefabs.Where(visitor => !visitor.IsGround);
-                int roll = Random.Range(0, notPests.Count() - 1);
-                visitorTypePrefab = notPests.ElementAt(roll);
-            }
+            
+            //if ()
+            //{
+            //    IEnumerable<GardenVisitor> pests = PossibleGardenVisitorPrefabs.Where(visitor => visitor.IsGround);
+            //    int roll = Random.Range(0, pests.Count() - 1);
+            //    visitorTypePrefab = pests.ElementAt(roll);
+            //}
+            //else
+            //{
+            //    IEnumerable<GardenVisitor> notPests = PossibleGardenVisitorPrefabs.Where(visitor => !visitor.IsGround);
+            //    int roll = Random.Range(0, notPests.Count() - 1);
+            //    visitorTypePrefab = notPests.ElementAt(roll);
+            //}
 
             return visitorTypePrefab;
         }
@@ -219,12 +237,14 @@ namespace BirbSimulator
             if (isGround)
             {
                 IEnumerable<Spawner> groundSpawners = PossibleSpawners.Where(spawn => spawn.IsGround);
-
+                int roll = Random.Range(0, groundSpawners.Count() - 1);
+                spawner = groundSpawners.ElementAt(roll);
             }
             else
             {
                 IEnumerable<Spawner> airSpawners = PossibleSpawners.Where(spawn => !spawn.IsGround);
-
+                int roll = Random.Range(0, airSpawners.Count() - 1);
+                spawner = airSpawners.ElementAt(roll);
             }
 
             return spawner;
@@ -232,30 +252,68 @@ namespace BirbSimulator
 
         Feeder GetFeederById(int feederId)
         {
-            return null;
+            Feeder feeder = null;
+
+            foreach (Feeder test in PossibleFeeders)
+            {
+                if (test.FeederId == feederId)
+                {
+                    feeder = test;
+                    break;
+                }
+            }
+
+            return feeder;
         }
 
         Spawner GetSpawnerById(int spawnerId)
         {
-            return null;
+            Spawner spawner = null;
+
+            foreach (Spawner test in PossibleSpawners)
+            {
+                if (test.SpawnerId == spawnerId)
+                {
+                    spawner = test;
+                    break;
+                }
+            }
+
+            return spawner;
         }
 
         GardenVisitor GetGardenVisitorTypeById(int gvId)
         {
-            return null;
+            GardenVisitor visitor = null;
+
+            foreach (GardenVisitor test in PossibleGardenVisitorPrefabs)
+            {
+                if (test.VisitorId == gvId)
+                {
+                    visitor = test;
+                    break;
+                }
+            }
+
+            return visitor;
         }
 
         void TapVisitor(GardenVisitor visitor)
         {
+            switch (visitor.RewardType)
+            {
+                case EResourceType.ERT_Money:
+                    PlayerInventory.UpdateMoney(visitor.MoneyRewardAmount);
+                    break;
+                case EResourceType.ERT_Seed:
+                    PlayerInventory.AddSeed(visitor.SeedRewardId, 1);
+                    break;
+            }
 
+            visitor.OnTap();
         }
 
         void TapFeeder(Feeder feeder)
-        {
-
-        }
-
-        void MoveVisitor(GardenVisitor visitor)
         {
 
         }
