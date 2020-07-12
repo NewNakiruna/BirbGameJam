@@ -37,7 +37,7 @@ public class UINavigation : MonoBehaviour
         Transform contentPanelForShop = thisShopWindow.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0);
         for (int i = 0;i<thisGardenManager.PossibleSeedTypes.Count;i++)
         {
-            ShopItem lineItem = Instantiate(shopItem, contentPanel);
+            ShopItem lineItem = Instantiate(shopItem, contentPanelForShop);
             lineItem.InitShopItem(thisGardenManager.PossibleSeedTypes[i], thisGardenManager);
         }
     }
