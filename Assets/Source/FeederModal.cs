@@ -17,6 +17,7 @@ namespace BirbSimulator
 
         public void OnClickExit()
         {
+            Debug.Log("Clicked exit.");
             GardenManagerRef.NavigationManager.CloseFeederMenu();
             Destroy(gameObject);
         }
