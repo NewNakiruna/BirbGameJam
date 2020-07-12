@@ -59,8 +59,8 @@ public class UINavigation : MonoBehaviour
 
     void CloseShopWindow()
     {
-        GameObject.Destroy(thisShopWindow);
         thisGardenManager.SetUIOpen(false);
+        GameObject.Destroy(thisShopWindow);
     }
 
     public void OpenFeederMenu()
