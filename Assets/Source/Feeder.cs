@@ -15,7 +15,6 @@ namespace BirbSimulator
         public int MaxFeed;
         public List<FeederLandingSpot> AirLandingSpots;
         public List<FeederLandingSpot> GroundLandingSpots;
-        public Sprite FeederSprite;
         // End Inspector Values
 
         // Non-Inspector Values
