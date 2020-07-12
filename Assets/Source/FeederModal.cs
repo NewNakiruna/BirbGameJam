@@ -6,11 +6,13 @@ namespace BirbSimulator
 {
     public class FeederModal : MonoBehaviour
     {
+        public GameObject ContentRoot;
         protected GardenManager GardenManagerRef;
 
         public void InitFeederModal(GardenManager gardenManager)
         {
             GardenManagerRef = gardenManager;
+
         }
 
         public void OnClickExit()

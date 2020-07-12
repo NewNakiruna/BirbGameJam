@@ -409,6 +409,11 @@ namespace BirbSimulator
             PlayerInventory.RemoveSeed(seedId, amount);
         }
 
+        public Dictionary<int, int> GetSeeds()
+        {
+            return PlayerInventory.GetSeeds();
+        }
+
         public void SetUIOpen(bool isOpen)
         {
             UIOpen = isOpen;
