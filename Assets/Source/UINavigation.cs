@@ -14,6 +14,23 @@ public class UINavigation : MonoBehaviour
     {
         thisShopWindow = Instantiate(shopModal, contentPanel);
         Component[] Buttons = thisShopWindow.GetComponentsInChildren<Button>();
-        Debug.Log(Buttons[2].name);
+        Buttons[0].GetComponent<Button>().onClick.AddListener(delegate { ResetGameState(); });
+        Buttons[1].GetComponent<Button>().onClick.AddListener(delegate { CloseShopWindow(); });
+        Buttons[2].GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
+    }
+
+    void ResetGameState()
+    {
+
+    }
+
+    void CloseShopWindow()
+    {
+        GameObject.Destroy(thisShopWindow);
+    }
+
+    void QuitGame()
+    {
+
     }
 }
