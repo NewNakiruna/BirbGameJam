@@ -738,6 +738,8 @@ MonoBehaviour:
   contentPanel: {fileID: 422831496}
   shopModal: {fileID: 8574493561598276781, guid: d290110e4ed4077409db0907c48ed1ac,
     type: 3}
+  thisGardenManager: {fileID: 1107394286}
+  shopItem: {fileID: 92368449156544409, guid: c8484764e988b0d458a606666646b58b, type: 3}
 --- !u!1 &1407777250
 GameObject:
   m_ObjectHideFlags: 0
