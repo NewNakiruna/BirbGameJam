@@ -6,5 +6,4 @@ public class ShopItem : MonoBehaviour
 {
     public string Description;
     public int Cost;
-
 }
