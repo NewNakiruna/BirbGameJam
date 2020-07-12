@@ -74,6 +74,8 @@ namespace BirbSimulator
                 TimeBetweenSpawns = Random.Range(MinTimeBetweenSpawns, MaxTimeBetweenSpawns);
             }
 
+            List<GardenVisitor> pendingDestroy = new List<GardenVisitor>();
+
             foreach (GardenVisitor visitor in CurrentGardenVisitors)
             {
                 Feeder feeder = GetFeederById(visitor.GetFeederId());
@@ -109,8 +111,7 @@ namespace BirbSimulator
                     {
                         if (visitorLerpPosition >= 1.0f)
                         {
-                            CurrentGardenVisitors.Remove(visitor);
-                            Destroy(visitor);
+                            pendingDestroy.Add(visitor);
                         }
                     }
                     else
@@ -143,6 +144,13 @@ namespace BirbSimulator
                 }
                 visitor.ConsumePending();
             }
+
+            foreach (GardenVisitor visitor in pendingDestroy)
+            {
+                Destroy(visitor);
+            }
+
+            pendingDestroy.Clear();
         }
 
         void InitializeNewGame()
@@ -211,6 +219,8 @@ namespace BirbSimulator
                 newVisitor.SetFeederId(spawningFeeder.FeederId);
                 newVisitor.SetFeederLandingSpotId(landingSpot.LandingSpotId);
                 newVisitor.SetSpawnerId(spawner.SpawnerId);
+
+                spawningFeeder.AssignSlot(isGround);
 
                 CurrentGardenVisitors.Add(newVisitor);
             }
