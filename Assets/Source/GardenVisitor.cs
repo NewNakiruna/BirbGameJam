@@ -175,6 +175,15 @@ namespace BirbSimulator
             return LerpPosition;
         }
 
+        void OnMouseDown()
+        {
+            if (CanTap())
+            {
+                Debug.Log(DisplayName + " click.");
+                gameObject.transform.parent.GetComponent<GardenManager>().TapVisitor(this);
+            }
+        }
+
         public void SetAnimState(EVisitorAnimState newState)
         {
             CurrentAnimState = newState;

@@ -109,7 +109,6 @@ namespace BirbSimulator
 
                     if (visitor.GetPendingLeave())
                     {
-                        Debug.Log(visitorLerpPosition);
                         if (visitorLerpPosition >= 1.0f)
                         {
                             pendingDestroy.Add(visitor);
@@ -157,6 +156,11 @@ namespace BirbSimulator
             }
 
             pendingDestroy.Clear();
+
+            foreach (Feeder feeder in PossibleFeeders)
+            {
+                feeder.UpdateFeeder(frameDeltaTime);
+            }
         }
 
         void InitializeNewGame()
@@ -169,6 +173,7 @@ namespace BirbSimulator
             if (PossibleFeeders.Count > 0 && PossibleFeeders[0] != null)
             {
                 PossibleFeeders[0].Unlock();
+                PossibleFeeders[0].FillFeeder(0);
             }
 
             PlayerInventory = new Inventory();
@@ -220,7 +225,7 @@ namespace BirbSimulator
                     return;
                 }
 
-                GardenVisitor newVisitor = Instantiate(attemptedVisitor, spawnPosition, Quaternion.identity);
+                GardenVisitor newVisitor = Instantiate(attemptedVisitor, spawnPosition, Quaternion.identity, gameObject.transform);
                 newVisitor.InitializeGardenVisitor();
                 newVisitor.SetFeederId(spawningFeeder.FeederId);
                 newVisitor.SetFeederLandingSpotId(landingSpot.LandingSpotId);
@@ -333,7 +338,7 @@ namespace BirbSimulator
             return visitor;
         }
 
-        void TapVisitor(GardenVisitor visitor)
+        public void TapVisitor(GardenVisitor visitor)
         {
             switch (visitor.RewardType)
             {
