@@ -14,12 +14,13 @@ namespace BirbSimulator
 
         protected GardenManager GardenManagerRef;
         protected Seed SeedRef;
-        
+               
         public void InitShopItem(Seed seed, GardenManager gmRef)
         {
             ItemImage.sprite = seed.gameObject.GetComponent<Image>().sprite;
             BuyText.text = "" + seed.Cost;
             DescriptionText.text = seed.DisplayName;
+            ItemImage.color = seed.Color;
 
             GardenManagerRef = gmRef;
             SeedRef = seed;
