@@ -28,7 +28,7 @@ public class UINavigation : MonoBehaviour
         Buttons[2].GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
 
         BuildTheShop();
-        //UpdateTheShop();
+        UpdateTheShop();
     }
 
     void BuildTheShop()
@@ -39,6 +39,7 @@ public class UINavigation : MonoBehaviour
         {
             ShopItem lineItem = Instantiate(shopItem, contentPanelForShop);
             lineItem.InitShopItem(thisGardenManager.PossibleSeedTypes[i], thisGardenManager);
+            buyButtons[i] = lineItem.BuyButton;
         }
     }
 
