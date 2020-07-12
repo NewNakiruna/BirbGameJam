@@ -32,6 +32,7 @@ public class UINavigation : MonoBehaviour
         {
             GameObject lineItem = Instantiate(shopItem,contentPanelForShop);
             lineItem.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = thisGardenManager.PossibleSeedTypes[i].DisplayName;
+            lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "$"+thisGardenManager.PossibleSeedTypes[i].Cost.ToString();
         }
     }
 
