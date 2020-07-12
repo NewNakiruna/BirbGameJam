@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace BirbSimulator
@@ -12,11 +13,13 @@ namespace BirbSimulator
         public int MaxPossibleSlots;
         public int StartingSlotAmount;
         public int MaxFeed;
-        public List<FeederLandingSpot> LandingSpots;
+        public List<FeederLandingSpot> AirLandingSpots;
+        public List<FeederLandingSpot> GroundLandingSpots;
+        public Sprite FeederSprite;
         // End Inspector Values
 
         // Non-Inspector Values
-        protected int CurrentSlotAmount;
+        protected int CurrentAvailableSlotAmount;
         protected bool IsUnlocked;
         protected int CurrentFeedAmount;
         protected int CurrentFeedRarity;
@@ -24,29 +27,22 @@ namespace BirbSimulator
 
         public void InitializeFeeder()
         {
-            CurrentSlotAmount = StartingSlotAmount;
+            CurrentAvailableSlotAmount = StartingSlotAmount;
             CurrentFeedAmount = 0;
             CurrentFeedRarity = -1;
             IsUnlocked = false;
         }
 
-        /*public void UpdateFeeder(float deltaTime)
+        public bool CanSpawnAir()
         {
-            
-        }*/
+            int filledAirSlots = AirLandingSpots.Where(airSlot => airSlot.GetIsFilled()).Count();
+            return filledAirSlots < CurrentAvailableSlotAmount;
+        }
 
-        public bool CanSpawn()
+        public bool CanSpawnGround()
         {
-            bool canSpawn = false;
-            if(GetNextFreeSpot()!=-1)
-            {
-                canSpawn = true;
-              }
-            else
-            {
-                Lock();
-            }
-            return canSpawn;
+            int filledGroundSlots = GroundLandingSpots.Where(groundSlot => groundSlot.GetIsFilled()).Count();
+            return filledGroundSlots < GroundLandingSpots.Count;
         }
 
         public void Unlock()
@@ -90,32 +86,89 @@ namespace BirbSimulator
             else
             {
                 CurrentFeedAmount = 0;
+                CurrentFeedRarity = -1;
             }
         }
 
-        public int GetNextFreeSpot()
+        public int AssignSlot(bool isGround)
+        {
+            int spotId = -1;
+            FeederLandingSpot spot = null;
+            if (isGround)
+            {
+                spot = GetNextFreeGroundSlot();
+            }
+            else
+            {
+                spot = GetNextFreeAirSpot();
+            }
+
+            if (spot != null)
+            {
+                spot.FillSlot();
+                spotId = spot.LandingSpotId;
+            }
+
+            return spotId;
+        }
+
+        public void ReleaseSlot(bool isGround, int slotId)
+        {
+            FeederLandingSpot spot = null;
+            if (isGround)
+            {
+                spot = GetGroundLandingSpotById(slotId);
+            }
+            else
+            {
+                spot = GetAirLandingSpotById(slotId);
+            }
+
+            if (spot != null)
+            {
+                spot.EmptySlot();
+            }
+        }
+
+        public int GetNextFreeAirSpotId()
         {
             int landingSpotId = -1;
             //Loop through LandingSpots for an empty FeederLandingSpot
-            for (int i=0; i < LandingSpots.Count; i++)
+            for (int i=0; i < AirLandingSpots.Count; i++)
             {
                 //If FeederLandingSpot is empty, update returnValue to return the position in the array.
-                if(!LandingSpots[i].GetIsFilled())
+                if(!AirLandingSpots[i].GetIsFilled())
                 {
-                    landingSpotId =  LandingSpots[i].LandingSpotId;
+                    landingSpotId =  AirLandingSpots[i].LandingSpotId;
                     break;
                 }
             }
             return landingSpotId;
         }
 
-        public FeederLandingSpot GetLandingSpotById(int landingSpotId)
+        public FeederLandingSpot GetNextFreeAirSpot()
+        {
+            FeederLandingSpot landingSpot = null;
+            //Loop through LandingSpots for an empty FeederLandingSpot
+            for (int i = 0; i < AirLandingSpots.Count; i++)
+            {
+                //If FeederLandingSpot is empty, update returnValue to return the position in the array.
+                if (!AirLandingSpots[i].GetIsFilled())
+                {
+                    landingSpot = AirLandingSpots[i];
+                    break;
+                }
+            }
+            return landingSpot;
+        }
+
+        public FeederLandingSpot GetAirLandingSpotById(int landingSpotId)
         {
             int landingSpotIndex = -1;
             //Loop through LandingSpots looking for landingSpotId
-            for (int i = 0; i < LandingSpots.Count; i++)
+            for (int i = 0; i < AirLandingSpots.Count; i++)
             {
-                if (LandingSpots[i].LandingSpotId == landingSpotId)
+                if (AirLandingSpots[i].LandingSpotId == landingSpotId)
                 {
                     landingSpotIndex = i;
                     break;
@@ -129,7 +182,63 @@ namespace BirbSimulator
             }
             else
             {
-                return LandingSpots[landingSpotIndex];
+                return AirLandingSpots[landingSpotIndex];
+            }
+        }
+
+        public int GetNextFreeGroundSlotId()
+        {
+            int landingSpotId = -1;
+            //Loop through LandingSpots for an empty FeederLandingSpot
+            for (int i = 0; i < GroundLandingSpots.Count; i++)
+            {
+                //If FeederLandingSpot is empty, update returnValue to return the position in the array.
+                if (!GroundLandingSpots[i].GetIsFilled())
+                {
+                    landingSpotId = GroundLandingSpots[i].LandingSpotId;
+                    break;
+                }
+            }
+            return landingSpotId;
+        }
+
+        public FeederLandingSpot GetNextFreeGroundSlot()
+        {
+            FeederLandingSpot landingSpot = null;
+            //Loop through LandingSpots for an empty FeederLandingSpot
+            for (int i = 0; i < GroundLandingSpots.Count; i++)
+            {
+                //If FeederLandingSpot is empty, update returnValue to return the position in the array.
+                if (!GroundLandingSpots[i].GetIsFilled())
+                {
+                    landingSpot = GroundLandingSpots[i];
+                    break;
+                }
+            }
+            return landingSpot;
+        }
+
+        public FeederLandingSpot GetGroundLandingSpotById(int landingSpotId)
+        {
+            int landingSpotIndex = -1;
+            //Loop through LandingSpots looking for landingSpotId
+            for (int i = 0; i < GroundLandingSpots.Count; i++)
+            {
+                if (GroundLandingSpots[i].LandingSpotId == landingSpotId)
+                {
+                    landingSpotIndex = i;
+                    break;
+                }
+            }
+
+            //If landingSpotId was not found, return null. Else, return found FeederLandingSpot.
+            if (landingSpotIndex == -1)
+            {
+                return null;
+            }
+            else
+            {
+                return GroundLandingSpots[landingSpotIndex];
             }
         }
     }
