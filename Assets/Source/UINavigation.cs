@@ -16,6 +16,14 @@ public class UINavigation : MonoBehaviour
     protected GameObject thisShopWindow;
     protected Button[] buyButtons;
 
+    private void Update()
+    {
+        if (thisGardenManager.IsUIOpen())
+        {
+            UpdateTheShop();
+        }
+    }
+
     public void OpenShopWindow()
     {
         thisGardenManager.SetUIOpen(true);
@@ -23,7 +31,7 @@ public class UINavigation : MonoBehaviour
         thisShopWindow = Instantiate(shopModal, contentPanel);
         Component[] Buttons = thisShopWindow.GetComponentsInChildren<Button>();
         
-        Buttons[0].GetComponent<Button>().onClick.AddListener(delegate { ResetGameState(); });
+        Buttons[0].GetComponent<Button>().onClick.AddListener(delegate { thisGardenManager.UpdateMoney(50); });
         Buttons[1].GetComponent<Button>().onClick.AddListener(delegate { CloseShopWindow(); });
         Buttons[2].GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
 

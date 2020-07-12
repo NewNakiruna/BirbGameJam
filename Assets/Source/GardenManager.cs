@@ -423,6 +423,10 @@ namespace BirbSimulator
         {
             UIOpen = isOpen;
         }
+        public bool IsUIOpen()
+        {
+            return UIOpen;
+        }
 
         void SaveGame()
         {
