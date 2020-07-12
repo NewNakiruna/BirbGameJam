@@ -99,7 +99,7 @@ MonoBehaviour:
   DisplayName: Squirrel
   DisplayDescription: Demon Food Thief
   EatDuration: 4
-  EatAmountPerSec: 3
+  EatAmountPerSec: 4
   EatType: 0
   MoneyRewardAmount: 0
   SeedRewardId: 0
