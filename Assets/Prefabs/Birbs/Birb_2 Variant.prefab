@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2075893632098580695, guid: b9b44a887d8ffb1448e2fa9c1290b9af,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3605309755113146506, guid: 35a34bf208657a1419a0a6b33724b28b,
+        type: 3}
     - target: {fileID: 2194739511671765662, guid: b9b44a887d8ffb1448e2fa9c1290b9af,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,6 +68,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4939543637923911797, guid: b9b44a887d8ffb1448e2fa9c1290b9af,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9b35d60332d98264aa0f84ea8cf3145d, type: 2}
     - target: {fileID: 6148700273127754795, guid: b9b44a887d8ffb1448e2fa9c1290b9af,
         type: 3}
       propertyPath: VisitorId
@@ -100,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 8017619872864650023, guid: b9b44a887d8ffb1448e2fa9c1290b9af,
         type: 3}
       propertyPath: m_Name
-      value: Birb_2
+      value: Birb_2 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9b44a887d8ffb1448e2fa9c1290b9af, type: 3}

@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 908411977350438103, guid: 1eb7b079eca9090468ae37806fcc1f28,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8ee68605231457345a94c49f11e67954, type: 2}
     - target: {fileID: 2108539460658432137, guid: 1eb7b079eca9090468ae37806fcc1f28,
         type: 3}
       propertyPath: DisplayName
@@ -45,8 +50,14 @@ PrefabInstance:
     - target: {fileID: 2833843810392721285, guid: 1eb7b079eca9090468ae37806fcc1f28,
         type: 3}
       propertyPath: m_Name
-      value: Birb_3
+      value: Birb_3 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6113800765747969141, guid: 1eb7b079eca9090468ae37806fcc1f28,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -446295250663280506, guid: 8985c3f45c6d64d46a66dfbcd27440c4,
+        type: 3}
     - target: {fileID: 6224780424496135740, guid: 1eb7b079eca9090468ae37806fcc1f28,
         type: 3}
       propertyPath: m_LocalPosition.x

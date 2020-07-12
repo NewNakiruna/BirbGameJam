@@ -718,6 +718,8 @@ MonoBehaviour:
   - {fileID: 6148700273127754795, guid: b9b44a887d8ffb1448e2fa9c1290b9af, type: 3}
   - {fileID: 2108539460658432137, guid: 1eb7b079eca9090468ae37806fcc1f28, type: 3}
   - {fileID: 4887053317296161318, guid: 5159dffbdcc9eee4b8627107bf0cc351, type: 3}
+  - {fileID: 8557766386575185967, guid: 436afe2617db8234c90abaf8f4ff5d44, type: 3}
+  - {fileID: 4560629511888193591, guid: 7cfcd2015edddc540b8c13ebe774aa21, type: 3}
   PossibleSeedTypes:
   - {fileID: 4597933669747291512, guid: bf506b8f04ec2384f83da0f58a707852, type: 3}
   - {fileID: 4332524130293430040, guid: 3239b244e6aa882488b5e2fdf4da6ccf, type: 3}
