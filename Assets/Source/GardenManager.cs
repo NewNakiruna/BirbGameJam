@@ -121,11 +121,16 @@ namespace BirbSimulator
                             visitor.BeginEating();
                             if (feeder.GetIsEmpty())
                             {
-                                Debug.Log("Empty Feeder");
                                 visitor.SetAnimState(EVisitorAnimState.EVAS_Idle);
                             }
                             else
                             {
+                                float direction = spawnerPosition2d.x * landingSpotPosition2d.x;
+                                if (direction < 0.0f)
+                                {
+                                    visitor.transform.Rotate(Vector3.up, 180);
+                                    visitor.SetFlippedToEat(true);
+                                }
                                 visitor.SetAnimState(EVisitorAnimState.EVAS_Eat);
                             }
                         }

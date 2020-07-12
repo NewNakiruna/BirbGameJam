@@ -38,6 +38,7 @@ namespace BirbSimulator
         protected float LerpPosition;
         protected EVisitorAnimState CurrentAnimState;
         protected Animator VisitorAnimator;
+        protected bool FlippedToEat;
 
         public void InitializeGardenVisitor()
         {
@@ -162,8 +163,17 @@ namespace BirbSimulator
 
         public void Leave()
         {
+            if (PendingLeave)
+            {
+                return;
+            }
+
             SetAnimState(EVisitorAnimState.EVAS_Move);
-            gameObject.transform.Rotate(Vector3.up, 180);
+
+            if (!FlippedToEat)
+            {
+                gameObject.transform.Rotate(Vector3.up, 180);
+            }
 
             if (ConsumedAmount <= 0 && MustEatToTap)
             {
@@ -186,6 +196,11 @@ namespace BirbSimulator
                 Debug.Log(DisplayName + " click.");
                 gameObject.transform.parent.GetComponent<GardenManager>().TapVisitor(this);
             }
+        }
+
+        public void SetFlippedToEat(bool flipped)
+        {
+            FlippedToEat = flipped;
         }
 
         public void SetAnimState(EVisitorAnimState newState)
