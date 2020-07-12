@@ -11,7 +11,9 @@ public class UINavigation : MonoBehaviour
     public GardenManager thisGardenManager;
     public GameObject shopItem;
 
+    protected Inventory playerInventory;
     protected GameObject thisShopWindow;
+    protected Button[] buyButtons;
 
     public void OpenShopWindow()
     {
@@ -23,27 +25,49 @@ public class UINavigation : MonoBehaviour
         Buttons[2].GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
 
         BuildTheShop();
+        //UpdateTheShop();
     }
 
     void BuildTheShop()
     {
+        buyButtons = new Button[thisGardenManager.PossibleSeedTypes.Count];
         Transform contentPanelForShop = thisShopWindow.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0);
         for (int i = 0;i<thisGardenManager.PossibleSeedTypes.Count;i++)
         {
             GameObject lineItem = Instantiate(shopItem,contentPanelForShop);
+            //Change Description Text
             lineItem.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = thisGardenManager.PossibleSeedTypes[i].DisplayName;
+            
+            //Change Buy Button text
             lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "$"+thisGardenManager.PossibleSeedTypes[i].Cost.ToString();
+
+            //Add Buy Button to buyButtons list
+            buyButtons[i] = lineItem.transform.GetChild(0).transform.GetChild(1).GetComponent<Button>();
+
+            //Add Listener to the Buy Button to remove money = to cost and add 1 seed to player inventory
+            /*lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(
+                delegate { playerInventory.UpdateMoney(-thisGardenManager.PossibleSeedTypes[i].Cost); playerInventory.AddSeed(thisGardenManager.PossibleSeedTypes[i].SeedId, 1); });*/
         }
     }
 
-    void CreateShopItem()
+    public void UpdateTheShop()
     {
-
+        for (int i = 0; i < thisGardenManager.PossibleSeedTypes.Count; i++)
+        {
+            if (playerInventory.GetMoney() < thisGardenManager.PossibleSeedTypes[i].Cost)
+            {
+                buyButtons[i].interactable = false;
+            }
+            else
+            {
+                buyButtons[i].interactable = true;
+            }
+        }
     }
 
     void ResetGameState()
     {
-
+        thisGardenManager.ResetGameProgress();
     }
 
     void CloseShopWindow()

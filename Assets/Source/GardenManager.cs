@@ -148,7 +148,7 @@ namespace BirbSimulator
             PlayerInventory.InitializePlayerInventory();
         }
 
-        void ResetGameProgress()
+        public void ResetGameProgress()
         {
 
         }
