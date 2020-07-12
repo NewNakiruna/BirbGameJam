@@ -21,7 +21,6 @@ namespace BirbSimulator
         public int MinRarity;
         public int MaxRarity;
         public bool IsGround;
-        public Sprite VisitorSprite;
         public Animator VisitorAnimator;
         // End Inspector Values
 
