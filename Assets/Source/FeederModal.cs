@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FeederModal : MonoBehaviour
+namespace BirbSimulator
 {
-    // Start is called before the first frame update
-    void Start()
+    public class FeederModal : MonoBehaviour
     {
-        
-    }
+        protected GardenManager GardenManagerRef;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void InitFeederModal(GardenManager gardenManager)
+        {
+            GardenManagerRef = gardenManager;
+        }
+
+        public void OnClickExit()
+        {
+            GardenManagerRef.NavigationManager.CloseFeederMenu();
+            Destroy(gameObject);
+        }
     }
 }

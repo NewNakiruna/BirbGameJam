@@ -36,6 +36,7 @@ namespace BirbSimulator
         public List<Spawner> PossibleSpawners;
         public List<GardenVisitor> PossibleGardenVisitorPrefabs;
         public List<Seed> PossibleSeedTypes;
+        public UINavigation NavigationManager;
         // End Inspector Values
 
         // Non-Inspector Values
@@ -182,7 +183,7 @@ namespace BirbSimulator
         {
             foreach (Feeder feeder in PossibleFeeders)
             {
-                feeder.InitializeFeeder();
+                feeder.InitializeFeeder(this);
             }
 
             if (PossibleFeeders.Count > 0 && PossibleFeeders[0] != null)
@@ -378,9 +379,14 @@ namespace BirbSimulator
             visitor.OnTap();
         }
 
-        void TapFeeder(Feeder feeder)
+        public void TapFeeder(Feeder feeder)
         {
+            if (UIOpen)
+            {
+                return;
+            }
 
+            NavigationManager.OpenFeederMenu();
         }
 
         public void UpdateMoney(int amount)

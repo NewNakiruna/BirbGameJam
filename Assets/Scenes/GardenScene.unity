@@ -915,6 +915,7 @@ MonoBehaviour:
   - {fileID: 4332524130293430040, guid: 3239b244e6aa882488b5e2fdf4da6ccf, type: 3}
   - {fileID: 4390964855257088840, guid: 94ecc945b55a5564e8522c42a24db0a8, type: 3}
   - {fileID: 3563874855426745975, guid: f48b29f1d14ea3e4db1d44b30c6dedcb, type: 3}
+  NavigationManager: {fileID: 1107394287}
 --- !u!114 &1107394287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,6 +933,10 @@ MonoBehaviour:
   shopModal: {fileID: 8574493561598276781, guid: d290110e4ed4077409db0907c48ed1ac,
     type: 3}
   shopItem: {fileID: 6767247786558909445, guid: c8484764e988b0d458a606666646b58b,
+    type: 3}
+  feederModal: {fileID: 8144113656460891485, guid: ccc4e71eb4d98d2428be1231f60af37b,
+    type: 3}
+  feederItem: {fileID: 6399809079237347250, guid: 89b962f60904837498baa3bd484ada3f,
     type: 3}
 --- !u!1001 &1398307921
 PrefabInstance:
