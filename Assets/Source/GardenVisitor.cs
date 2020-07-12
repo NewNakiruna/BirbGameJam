@@ -20,6 +20,7 @@ namespace BirbSimulator
         public bool MustEatToTap = true;
         public int MinRarity;
         public int MaxRarity;
+        public EVisitorPersuasion VisitorPersuasion = EVisitorPersuasion.EVP_Regular;
         public bool IsGround;
         public float MoveSpeed = 1.0f;
         // End Inspector Values

@@ -18,12 +18,20 @@ namespace BirbSimulator
         EVAS_Eat
     }
 
+    public enum EVisitorPersuasion
+    {
+        EVP_Regular,
+        EVP_Pest,
+        EVP_Special
+    }
+
     public class GardenManager : MonoBehaviour
     {
         // Begin Inspector Values
         public float MinTimeBetweenSpawns;
         public float MaxTimeBetweenSpawns;
-        public int ProbabilityForPests = 40;
+        public int ProbabilityForPests = 30;
+        public int ProbabilityForSpecial = 10;
         public List<Feeder> PossibleFeeders;
         public List<Spawner> PossibleSpawners;
         public List<GardenVisitor> PossibleGardenVisitorPrefabs;
@@ -122,7 +130,10 @@ namespace BirbSimulator
                         {
                             foreach (GardenVisitor gv in CurrentGardenVisitors.Where(gardenVisitor => gardenVisitor.GetFeederId() == feeder.FeederId))
                             {
-                                gv.Leave();
+                                if (gv.MinRarity >= 0)
+                                {
+                                    gv.Leave();
+                                }
                             }
                         }
                         break;
@@ -157,19 +168,15 @@ namespace BirbSimulator
 
         void AttemptSpawn()
         {
-            GardenVisitor attemptedVisitor = ChooseVisitorType();
-            if (attemptedVisitor == null)
-            {
-                return;
-            }
-
-            bool isGround = attemptedVisitor.IsGround;
+            EVisitorPersuasion persuasion = ChooseVisitorPersuasion();
+            
+            bool isGround = persuasion == EVisitorPersuasion.EVP_Pest;
 
             FeederLandingSpot landingSpot = null;
             Feeder spawningFeeder = null;
             foreach (Feeder feeder in PossibleFeeders)
             {
-                if (feeder.GetIsUnlocked())
+                if (feeder != null && feeder.GetIsUnlocked())
                 {
                     if (isGround && feeder.CanSpawnGround())
                     {
@@ -193,6 +200,12 @@ namespace BirbSimulator
                 Vector3 spawnPosition = spawner.transform.position;
                 spawnPosition.z = 0;
 
+                GardenVisitor attemptedVisitor = ChooseVisitorType(spawningFeeder.GetCurrentFeedRarity(), persuasion);
+                if (attemptedVisitor == null)
+                {
+                    return;
+                }
+
                 GardenVisitor newVisitor = Instantiate(attemptedVisitor, spawnPosition, Quaternion.identity);
                 newVisitor.InitializeGardenVisitor();
                 newVisitor.SetFeederId(spawningFeeder.FeederId);
@@ -203,29 +216,35 @@ namespace BirbSimulator
             }
         }
 
-        bool ChooseVisitorPersuasion()
+        EVisitorPersuasion ChooseVisitorPersuasion()
         {
-            int pestRoll = Random.Range(1, 100);
-            return pestRoll <= ProbabilityForPests;
+            EVisitorPersuasion persuasion = EVisitorPersuasion.EVP_Regular;
+
+            int roll = Random.Range(1, 100);
+            if (roll <= (ProbabilityForPests + ProbabilityForSpecial))
+            {
+                persuasion = EVisitorPersuasion.EVP_Special;
+            }
+
+            if (roll <= ProbabilityForPests)
+            {
+                persuasion = EVisitorPersuasion.EVP_Pest;
+            }
+
+            return persuasion;
         }
 
-        GardenVisitor ChooseVisitorType()
+        GardenVisitor ChooseVisitorType(int rarity, EVisitorPersuasion persuasion)
         {
             GardenVisitor visitorTypePrefab = null;
 
-            
-            //if ()
-            //{
-            //    IEnumerable<GardenVisitor> pests = PossibleGardenVisitorPrefabs.Where(visitor => visitor.IsGround);
-            //    int roll = Random.Range(0, pests.Count() - 1);
-            //    visitorTypePrefab = pests.ElementAt(roll);
-            //}
-            //else
-            //{
-            //    IEnumerable<GardenVisitor> notPests = PossibleGardenVisitorPrefabs.Where(visitor => !visitor.IsGround);
-            //    int roll = Random.Range(0, notPests.Count() - 1);
-            //    visitorTypePrefab = notPests.ElementAt(roll);
-            //}
+            IEnumerable<GardenVisitor> filteredList = PossibleGardenVisitorPrefabs.Where(visitor => visitor.MinRarity <= rarity && visitor.MaxRarity >= rarity && visitor.VisitorPersuasion == persuasion);
+            int filteredCount = filteredList.Count();
+            if (filteredCount > 0)
+            {
+                int roll = Random.Range(0, filteredCount - 1);
+                visitorTypePrefab = filteredList.ElementAt(roll);
+            }
 
             return visitorTypePrefab;
         }
