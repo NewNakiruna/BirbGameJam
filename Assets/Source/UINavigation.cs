@@ -24,7 +24,7 @@ public class UINavigation : MonoBehaviour
         Buttons[2].GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
 
         BuildTheShop();
-        UpdateTheShop();
+        //UpdateTheShop();
     }
 
     void BuildTheShop()
