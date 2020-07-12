@@ -21,7 +21,7 @@ namespace BirbSimulator
         public int MinRarity;
         public int MaxRarity;
         public bool IsGround;
-        public Animator VisitorAnimator;
+        public float MoveSpeed = 1.0f;
         // End Inspector Values
 
         // Non-Inspector Values
@@ -34,15 +34,20 @@ namespace BirbSimulator
         protected int SpawnerId;
         protected int FeederId;
         protected int FeederLandingSpotId;
+        protected float LerpPosition;
         protected EVisitorAnimState CurrentAnimState;
+        protected Animator VisitorAnimator;
 
         public void InitializeGardenVisitor()
         {
             SpawnerId = -1;
             FeederId = -1;
             FeederLandingSpotId = -1;
+            EatTimer = 0.0f;
             IsEating = false;
+            LerpPosition = 1.0f;
             PendingLeave = false;
+            VisitorAnimator = gameObject.GetComponent<Animator>();
         }
 
         public void UpdateGardenVisitor(float deltaTime)
@@ -51,9 +56,13 @@ namespace BirbSimulator
             {
                 UpdateEatTimer(deltaTime);
             }
+            else
+            {
+                UpdateLerpPosition(deltaTime);
+            }
         }
 
-        public void UpdateEatTimer(float deltaTime)
+        void UpdateEatTimer(float deltaTime)
         {
             EatTimer += deltaTime;
 
@@ -64,8 +73,19 @@ namespace BirbSimulator
             PendingEatAmount += difference;
             if (EatTimer >= EatDuration)
             {
-                IsEating = false;
-                PendingLeave = true;
+                Leave();
+            }
+        }
+
+        void UpdateLerpPosition(float deltaTime)
+        {
+            if (PendingLeave)
+            {
+                LerpPosition = Mathf.Min(1.0f, LerpPosition + (MoveSpeed * deltaTime));
+            }
+            else
+            {
+                LerpPosition = Mathf.Max(0.0f, LerpPosition - (MoveSpeed * deltaTime));
             }
         }
 
@@ -99,6 +119,11 @@ namespace BirbSimulator
             FeederLandingSpotId = feederLandingSpotId;
         }
 
+        public bool GetIsEating()
+        {
+            return IsEating;
+        }
+
         public void BeginEating()
         {
             IsEating = true;
@@ -128,32 +153,29 @@ namespace BirbSimulator
             }
         }
 
+        public bool GetPendingLeave()
+        {
+            return PendingLeave;
+        }
+
         public void Leave()
         {
-            if (ConsumedAmount <= 0)
+            if (ConsumedAmount <= 0 && MustEatToTap)
             {
                 PendingEatAmount = EatAmountPerSec;
-                ConsumePending();
             }
 
             IsEating = false;
             PendingLeave = true;
         }
 
+        public float GetLerpPosition()
+        {
+            return LerpPosition;
+        }
+
         public void SetAnimState(EVisitorAnimState newState)
         {
-            if (VisitorAnimator != null)
-            {
-                switch(newState)
-                {
-                    case EVisitorAnimState.EVAS_Idle:
-                        break;
-                    case EVisitorAnimState.EVAS_Move:
-                        break;
-                    case EVisitorAnimState.EVAS_Eat:
-                        break;
-                }
-            }
             CurrentAnimState = newState;
         }
     }
