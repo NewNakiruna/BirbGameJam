@@ -20,6 +20,27 @@ TextureImporter:
   - first:
       213: 8318656950580053123
     second: Bird_SpriteSheet_01_Blue_5
+  - first:
+      213: 2661318514607525326
+    second: Bird_SpriteSheet_01_Blue_0
+  - first:
+      213: 8529739152488292375
+    second: Bird_SpriteSheet_01_Blue_1
+  - first:
+      213: -3195691290324842606
+    second: Bird_SpriteSheet_01_Blue_2
+  - first:
+      213: 7647914655838172158
+    second: Bird_SpriteSheet_01_Blue_3
+  - first:
+      213: -138446844937524358
+    second: Bird_SpriteSheet_01_Blue_4
+  - first:
+      213: 6428687892058500405
+    second: Bird_SpriteSheet_01_Blue_5
+  - first:
+      213: -2660347817151808562
+    second: Bird_SpriteSheet_01_Blue_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,13 +150,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: Bird_SpriteSheet_01_Blue_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ba93bf353241ef0800000000000000
+      internalID: -138446844937524358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: Bird_SpriteSheet_01_Blue_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 768
-        width: 256
-        height: 256
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +195,10 @@ TextureImporter:
       name: Bird_SpriteSheet_01_Blue_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 768
-        width: 256
-        height: 256
+        x: 128
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,9 +217,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 256
-        height: 256
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +237,10 @@ TextureImporter:
       name: Bird_SpriteSheet_01_Blue_3
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
-        width: 256
-        height: 256
+        x: 128
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,34 +255,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bird_SpriteSheet_01_Blue_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d03d248f325937b10800000000000000
-      internalID: 1978088643067302669
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bird_SpriteSheet_01_Blue_5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
+        x: 128
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

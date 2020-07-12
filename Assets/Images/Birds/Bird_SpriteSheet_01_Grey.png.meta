@@ -20,6 +20,27 @@ TextureImporter:
   - first:
       213: -6405066172442512747
     second: Bird_SpriteSheet_01_Grey_5
+  - first:
+      213: -5189068584587403758
+    second: Bird_SpriteSheet_01_Grey_0
+  - first:
+      213: -2852513940512051599
+    second: Bird_SpriteSheet_01_Grey_1
+  - first:
+      213: -7505333283766779154
+    second: Bird_SpriteSheet_01_Grey_2
+  - first:
+      213: -740706353059596597
+    second: Bird_SpriteSheet_01_Grey_3
+  - first:
+      213: 236757104019215526
+    second: Bird_SpriteSheet_01_Grey_4
+  - first:
+      213: 8380288093044998859
+    second: Bird_SpriteSheet_01_Grey_5
+  - first:
+      213: -1369146256705694011
+    second: Bird_SpriteSheet_01_Grey_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,13 +150,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: Bird_SpriteSheet_01_Grey_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a49d1be451294300800000000000000
+      internalID: 236757104019215526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: Bird_SpriteSheet_01_Grey_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 768
-        width: 256
-        height: 256
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +195,10 @@ TextureImporter:
       name: Bird_SpriteSheet_01_Grey_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 768
-        width: 256
-        height: 256
+        x: 128
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,9 +217,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 256
-        height: 256
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +237,10 @@ TextureImporter:
       name: Bird_SpriteSheet_01_Grey_3
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
-        width: 256
-        height: 256
+        x: 128
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,34 +255,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bird_SpriteSheet_01_Grey_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a56db0ab37b98a570800000000000000
-      internalID: 8478197219869840986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bird_SpriteSheet_01_Grey_5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
+        x: 128
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
