@@ -13,7 +13,6 @@ namespace BirbSimulator
         public int StartingSlotAmount;
         public int MaxFeed;
         public List<FeederLandingSpot> LandingSpots;
-        public Sprite FeederSprite;
         // End Inspector Values
 
         // Non-Inspector Values
@@ -97,9 +96,8 @@ namespace BirbSimulator
         public int GetNextFreeSpot()
         {
             int landingSpotId = -1;
-            int landingSpotCount = Mathf.Min(LandingSpots.Count, CurrentSlotAmount);
             //Loop through LandingSpots for an empty FeederLandingSpot
-            for (int i=0; i < landingSpotCount; i++)
+            for (int i=0; i < LandingSpots.Count; i++)
             {
                 //If FeederLandingSpot is empty, update returnValue to return the position in the array.
                 if(!LandingSpots[i].GetIsFilled())

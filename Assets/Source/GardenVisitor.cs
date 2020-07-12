@@ -44,6 +44,7 @@ namespace BirbSimulator
             FeederLandingSpotId = -1;
             IsEating = false;
             PendingLeave = false;
+            SetAnimState(EVisitorAnimState.EVAS_Idle);
         }
 
         public void UpdateGardenVisitor(float deltaTime)
@@ -147,7 +148,7 @@ namespace BirbSimulator
             {
                 switch(newState)
                 {
-                    case EVisitorAnimState.EVAS_Stand:
+                    case EVisitorAnimState.EVAS_Idle:
                         break;
                     case EVisitorAnimState.EVAS_Move:
                         break;
