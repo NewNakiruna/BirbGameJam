@@ -10,8 +10,10 @@ public class UINavigation : MonoBehaviour
     public GameObject shopModal;
     public GardenManager thisGardenManager;
     public GameObject shopItem;
+    public Inventory playerInventory;
 
     protected GameObject thisShopWindow;
+    protected Button[] buyButtons;
 
     public void OpenShopWindow()
     {
@@ -31,19 +33,35 @@ public class UINavigation : MonoBehaviour
         for (int i = 0;i<thisGardenManager.PossibleSeedTypes.Count;i++)
         {
             GameObject lineItem = Instantiate(shopItem,contentPanelForShop);
+            //Change Description Text
             lineItem.transform.GetChild(0).transform.GetChild(2).GetComponent<Text>().text = thisGardenManager.PossibleSeedTypes[i].DisplayName;
+            
+            //Change Buy Button text
             lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "$"+thisGardenManager.PossibleSeedTypes[i].Cost.ToString();
+
+            //Add Buy Button to buyButtons list
+            buyButtons[i] = lineItem.transform.GetChild(0).transform.GetChild(1).GetChild(0).GetComponent<Button>();
         }
     }
 
-    void CreateShopItem()
+    public void UpdateTheShop()
     {
-
+        for (int i = 0; i < thisGardenManager.PossibleSeedTypes.Count; i++)
+        {
+            if (playerInventory.GetMoney() < thisGardenManager.PossibleSeedTypes[i].Cost)
+            {
+                buyButtons[i].interactable = false;
+            }
+            else
+            {
+                buyButtons[i].interactable = true;
+            }
+        }
     }
 
     void ResetGameState()
     {
-
+        thisGardenManager.ResetGameProgress();
     }
 
     void CloseShopWindow()

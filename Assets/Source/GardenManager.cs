@@ -63,7 +63,7 @@ namespace BirbSimulator
             }
         }
 
-        void ResetGameProgress()
+        public void ResetGameProgress()
         {
 
         }
