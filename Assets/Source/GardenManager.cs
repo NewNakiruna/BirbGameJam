@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BirbSimulator
 {
@@ -37,6 +38,7 @@ namespace BirbSimulator
         public List<GardenVisitor> PossibleGardenVisitorPrefabs;
         public List<Seed> PossibleSeedTypes;
         public UINavigation NavigationManager;
+        public Text TextField;
         // End Inspector Values
 
         // Non-Inspector Values
@@ -177,6 +179,9 @@ namespace BirbSimulator
             {
                 feeder.UpdateFeeder(frameDeltaTime);
             }
+
+            //Update Money in real time
+            TextField.text = "$"+GetMoney().ToString();
         }
 
         void InitializeNewGame()
@@ -417,6 +422,10 @@ namespace BirbSimulator
         public void SetUIOpen(bool isOpen)
         {
             UIOpen = isOpen;
+        }
+        public bool IsUIOpen()
+        {
+            return UIOpen;
         }
 
         void SaveGame()

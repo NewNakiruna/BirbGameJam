@@ -118,7 +118,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8664110551614151346}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 43ba9d5c116e9f149b86658d66eddde8, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1733412613565155059
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,8 +168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -340.51}
-  m_SizeDelta: {x: -40, y: -738.9747}
+  m_AnchoredPosition: {x: 0, y: -311.72}
+  m_SizeDelta: {x: -40, y: -663.4375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2315618668127075329
 Canvas:
@@ -1178,8 +1189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -37.5}
+  m_SizeDelta: {x: 0, y: -75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8574493561598276771
 Canvas:
@@ -1391,7 +1402,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset Game
+  m_Text: Cheat Money
 --- !u!1 &9002811438108922747
 GameObject:
   m_ObjectHideFlags: 0
