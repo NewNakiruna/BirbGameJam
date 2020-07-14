@@ -12,17 +12,9 @@ public class UINavigation : MonoBehaviour
     public ShopItem shopItem;
     public FeederModal feederModal;
     public FeederItem feederItem;
-    
+
     protected GameObject thisShopWindow;
     protected Button[] buyButtons;
-
-    private void Update()
-    {
-        if (thisGardenManager.IsUIOpen())
-        {
-            UpdateTheShop();
-        }
-    }
 
     public void OpenShopWindow()
     {
@@ -31,12 +23,12 @@ public class UINavigation : MonoBehaviour
         thisShopWindow = Instantiate(shopModal, contentPanel);
         Component[] Buttons = thisShopWindow.GetComponentsInChildren<Button>();
         
-        Buttons[0].GetComponent<Button>().onClick.AddListener(delegate { thisGardenManager.UpdateMoney(50); });
+        Buttons[0].GetComponent<Button>().onClick.AddListener(delegate { ResetGameState(); });
         Buttons[1].GetComponent<Button>().onClick.AddListener(delegate { CloseShopWindow(); });
         Buttons[2].GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
 
         BuildTheShop();
-        UpdateTheShop();
+        //UpdateTheShop();
     }
 
     void BuildTheShop()
@@ -47,7 +39,6 @@ public class UINavigation : MonoBehaviour
         {
             ShopItem lineItem = Instantiate(shopItem, contentPanelForShop);
             lineItem.InitShopItem(thisGardenManager.PossibleSeedTypes[i], thisGardenManager);
-            buyButtons[i] = lineItem.BuyButton;
         }
     }
 

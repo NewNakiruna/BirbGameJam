@@ -11,7 +11,6 @@ namespace BirbSimulator
         public string DisplayName;
         public int Rarity;
         public int Cost;
-        public Color32 Color;
         // End Inspector Values
     }
 

@@ -32,11 +32,6 @@ PrefabInstance:
       propertyPath: DisplayName
       value: Gourmet Seed Mix
       objectReference: {fileID: 0}
-    - target: {fileID: 4650718501064730611, guid: 8f34894051b85df4592095ce302d4bbe,
-        type: 3}
-      propertyPath: Color.rgba
-      value: 4293357592
-      objectReference: {fileID: 0}
     - target: {fileID: 4755175875293236100, guid: 8f34894051b85df4592095ce302d4bbe,
         type: 3}
       propertyPath: m_LocalPosition.x
