@@ -18,7 +18,7 @@ namespace BirbSimulator
         public void InitShopItem(Seed seed, GardenManager gmRef)
         {
             ItemImage.sprite = seed.gameObject.GetComponent<Image>().sprite;
-            BuyText.text = "" + seed.Cost;
+            BuyText.text = "$ " + seed.Cost;
             DescriptionText.text = seed.DisplayName;
             ItemImage.color = seed.Color;
 

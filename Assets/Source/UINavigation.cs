@@ -72,11 +72,11 @@ public class UINavigation : MonoBehaviour
         GameObject.Destroy(thisShopWindow);
     }
 
-    public void OpenFeederMenu()
+    public void OpenFeederMenu(Feeder feeder)
     {
         thisGardenManager.SetUIOpen(true);
         FeederModal modal = Instantiate(feederModal, contentPanel);
-        modal.InitFeederModal(thisGardenManager);
+        modal.InitFeederModal(feeder, thisGardenManager);
     }
 
     public void CloseFeederMenu()

@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: 2108539460658432137, guid: 1eb7b079eca9090468ae37806fcc1f28,
         type: 3}
       propertyPath: LeavesOnTap
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2108539460658432137, guid: 1eb7b079eca9090468ae37806fcc1f28,
         type: 3}

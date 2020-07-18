@@ -364,6 +364,22 @@ namespace BirbSimulator
             return visitor;
         }
 
+        public Seed GetSeedTypeById(int seedId)
+        {
+            Seed seed = null;
+
+            foreach (Seed test in PossibleSeedTypes)
+            {
+                if (test.SeedId == seedId)
+                {
+                    seed = test;
+                    break;
+                }
+            }
+
+            return seed;
+        }
+
         public void TapVisitor(GardenVisitor visitor)
         {
             if (UIOpen)
@@ -391,7 +407,13 @@ namespace BirbSimulator
                 return;
             }
 
-            NavigationManager.OpenFeederMenu();
+            NavigationManager.OpenFeederMenu(feeder);
+        }
+
+        public void FillFeederWithSeed(Feeder feeder, Seed seed)
+        {
+            feeder.FillFeeder(seed.Rarity);
+            RemoveSeed(seed.SeedId, 1);
         }
 
         public void UpdateMoney(int amount)

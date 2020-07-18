@@ -7,12 +7,29 @@ namespace BirbSimulator
     public class FeederModal : MonoBehaviour
     {
         public GameObject ContentRoot;
-        protected GardenManager GardenManagerRef;
+        public FeederItem FeederItemPrefab;
 
-        public void InitFeederModal(GardenManager gardenManager)
+        protected GardenManager GardenManagerRef;
+        protected Feeder FeederRef;
+
+        public void InitFeederModal(Feeder feeder, GardenManager gardenManager)
         {
+            FeederRef = feeder;
             GardenManagerRef = gardenManager;
 
+            Dictionary<int, int> seedInventory = GardenManagerRef.GetSeeds();
+            foreach (int seedId in seedInventory.Keys)
+            {
+                Seed seedtype = GardenManagerRef.GetSeedTypeById(seedId);
+                FeederItem item = Instantiate<FeederItem>(FeederItemPrefab, ContentRoot.transform);
+                item.InitFeederItem(seedtype, seedInventory[seedId], this);
+            }
+        }
+
+        public void OnClickFeederItem(Seed seedType)
+        {
+            GardenManagerRef.FillFeederWithSeed(FeederRef, seedType);
+            OnClickExit();
         }
 
         public void OnClickExit()
